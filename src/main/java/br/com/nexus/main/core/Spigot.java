@@ -15,7 +15,6 @@ public class Spigot extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-
         redisConnection.openConnection(getConfig().getString("Redis.address"), getConfig().getInt("Redis.port"));
         mongoConnection.openConnection(getConfig().getString("MongoDB.address"), getConfig().getInt("MongoDB.port"));
         serverEnable.sendPublishMessage();
