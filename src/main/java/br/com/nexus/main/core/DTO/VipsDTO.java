@@ -5,7 +5,14 @@ public class VipsDTO {
     private String name;
     private String prefix;
     private String color;
-    private int priority;
+    private String priority;
+
+    public VipsDTO(String name, String prefix, String color, String priority) {
+        this.name = name;
+        this.prefix = prefix;
+        this.color = color;
+        this.priority = priority;
+    }
 
     public String getName() {
         return name;
@@ -29,5 +36,13 @@ public class VipsDTO {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 }

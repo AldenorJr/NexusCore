@@ -25,7 +25,7 @@ public class UsersMethodDatabase {
         this.textComponentUtil = textComponentUtil;
     }
 
-    public void createDatabase(ProxiedPlayer player) {
+    public void insertDatabase(ProxiedPlayer player) {
         MongoDatabase nexusUsers = mongoClient.getConnection().getDatabase("RedeCrystal");
         MongoCollection<Document> users = nexusUsers.getCollection("Users");
         Document user = users.find(new Document("Nick", player.getName())).first();

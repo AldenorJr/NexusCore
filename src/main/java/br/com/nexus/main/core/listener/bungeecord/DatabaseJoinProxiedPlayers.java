@@ -16,7 +16,7 @@ public class DatabaseJoinProxiedPlayers implements Listener {
 
     @EventHandler
     public void onJoinEvent(PostLoginEvent e) {
-        usersMethodDatabase.createDatabase(e.getPlayer());
+        usersMethodDatabase.insertDatabase(e.getPlayer());
     }
 
 }
