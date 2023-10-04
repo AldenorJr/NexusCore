@@ -22,7 +22,6 @@ public class Bungeecord extends Plugin {
     private final UsersMethodDatabase usersMethodDatabase = new UsersMethodDatabase(mongoConnection, textComponentUtil);
     private final DatabaseJoinProxiedPlayers databaseJoinProxiedPlayers = new DatabaseJoinProxiedPlayers(usersMethodDatabase);
     private final ServerRegistration serverRegistration = new ServerRegistration(redisConnection, textComponentUtil);
-    private final SecurityJoinProxiedPlayers securityJoinProxiedPlayers = new SecurityJoinProxiedPlayers(redisConnection, configurationFile, textComponentUtil, this);
 
     @Override
     public void onEnable() {
@@ -35,7 +34,6 @@ public class Bungeecord extends Plugin {
         } catch (IOException e) {
             BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §aErro ao carregar a config.yml"));
         }
-        BungeeCord.getInstance().getPluginManager().registerListener(this, securityJoinProxiedPlayers);
         BungeeCord.getInstance().getPluginManager().registerListener(this, databaseJoinProxiedPlayers);
         serverRegistration.sendSubscriberMessage();
         BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §aHabilitado §c§lBUNGEECORD."));
