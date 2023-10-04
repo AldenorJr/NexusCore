@@ -1,4 +1,4 @@
-package br.com.nexus.main.core.models;
+package br.com.nexus.main.core.launches.spigot.models;
 
 public class PlayerTagsModel {
 

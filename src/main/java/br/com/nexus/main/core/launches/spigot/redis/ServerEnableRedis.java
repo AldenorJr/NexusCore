@@ -1,6 +1,6 @@
-package br.com.nexus.main.core.listener;
+package br.com.nexus.main.core.launches.spigot.listener;
 
-import br.com.nexus.main.core.Spigot;
+import br.com.nexus.main.core.launches.spigot.Spigot;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import org.bukkit.Bukkit;
 import redis.clients.jedis.Jedis;
@@ -26,6 +26,7 @@ public class ServerEnable {
 
         jedis.publish(channel, "REGISTER_SERVER " + port + " " + address + " " + motd + " " + name);
         Bukkit.getConsoleSender().sendMessage("§6§l[NexusCore] §aEnviado solicitação de registro do servidor "+name+".");
+        jedis.close();
     }
 
 }
