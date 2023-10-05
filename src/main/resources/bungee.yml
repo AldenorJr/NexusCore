@@ -1,4 +1,4 @@
 name: NexusCoreBungeeCord
 version: 1.0.0
 author: YTNexus
-main: br.com.nexus.main.core.Bungeecord
+main: br.com.nexus.main.core.launches.bungeecord.Bungeecord

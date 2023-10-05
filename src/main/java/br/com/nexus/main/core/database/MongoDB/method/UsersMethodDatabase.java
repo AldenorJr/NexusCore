@@ -1,11 +1,10 @@
 package br.com.nexus.main.core.database.MongoDB.method;
 
 import br.com.nexus.main.core.database.MongoDB.MongoConnection;
-import br.com.nexus.main.core.models.PlayerPetsModel;
-import br.com.nexus.main.core.models.PlayerSymbolModel;
-import br.com.nexus.main.core.models.PlayerTagsModel;
-import br.com.nexus.main.core.models.PlayerVipModel;
-import br.com.nexus.main.core.util.TextComponentUtil;
+import br.com.nexus.main.core.launches.spigot.models.PlayerPetsModel;
+import br.com.nexus.main.core.launches.spigot.models.PlayerSymbolModel;
+import br.com.nexus.main.core.launches.spigot.models.PlayerTagsModel;
+import br.com.nexus.main.core.launches.bungeecord.util.TextComponentUtil;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import net.md_5.bungee.BungeeCord;
@@ -33,10 +32,6 @@ public class UsersMethodDatabase {
             Document newPlayer = new Document("Nick", player.getName());
             newPlayer.append("FirstJoin", new Date())
                     .append("LastJoin", new Date())
-                    .append("VIPs", new ArrayList<PlayerVipModel>())
-                    .append("TAGs", new ArrayList<PlayerTagsModel>())
-                    .append("Symbol", new ArrayList<PlayerSymbolModel>())
-                    .append("Pets", new ArrayList<PlayerPetsModel>())
                     .append("Member", false);
             users.insertOne(newPlayer);
             BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §aJogador " + player.getName() + " foi criado no banco de dados."));

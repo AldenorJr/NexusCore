@@ -1,4 +1,4 @@
-package br.com.nexus.main.core.util;
+package br.com.nexus.main.core.launches.bungeecord.util;
 
 import net.md_5.bungee.api.chat.TextComponent;
 

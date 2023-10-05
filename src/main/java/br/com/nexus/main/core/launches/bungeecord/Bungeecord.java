@@ -1,12 +1,12 @@
-package br.com.nexus.main.core;
+package br.com.nexus.main.core.launches.bungeecord;
 
 import br.com.nexus.main.core.database.MongoDB.MongoConnection;
 import br.com.nexus.main.core.database.MongoDB.method.UsersMethodDatabase;
 import br.com.nexus.main.core.database.redis.RedisConnection;
-import br.com.nexus.main.core.listener.ServerRegistration;
-import br.com.nexus.main.core.listener.bungeecord.DatabaseJoinProxiedPlayers;
-import br.com.nexus.main.core.util.ConfigurationFile;
-import br.com.nexus.main.core.util.TextComponentUtil;
+import br.com.nexus.main.core.launches.bungeecord.redis.ServerRegistration;
+import br.com.nexus.main.core.launches.bungeecord.listener.DatabaseJoinProxiedPlayers;
+import br.com.nexus.main.core.launches.bungeecord.util.ConfigurationFile;
+import br.com.nexus.main.core.launches.bungeecord.util.TextComponentUtil;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
