@@ -1,4 +1,4 @@
-package br.com.nexus.main.core.listener.bungeecord;
+package br.com.nexus.main.core.launches.bungeecord.listener;
 
 
 import br.com.nexus.main.core.database.MongoDB.method.UsersMethodDatabase;

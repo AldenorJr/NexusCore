@@ -1,7 +1,7 @@
-package br.com.nexus.main.core.listener;
+package br.com.nexus.main.core.launches.bungeecord.redis;
 
 import br.com.nexus.main.core.database.redis.RedisConnection;
-import br.com.nexus.main.core.util.TextComponentUtil;
+import br.com.nexus.main.core.launches.bungeecord.util.TextComponentUtil;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
@@ -9,7 +9,6 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
 import java.net.InetSocketAddress;
-import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

@@ -1,16 +1,16 @@
-package br.com.nexus.main.core.launches.spigot.listener;
+package br.com.nexus.main.core.launches.spigot.redis;
 
 import br.com.nexus.main.core.launches.spigot.Spigot;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import org.bukkit.Bukkit;
 import redis.clients.jedis.Jedis;
 
-public class ServerEnable {
+public class ServerEnableRedis {
 
     private final RedisConnection redisConnection;
     private final Spigot main;
 
-    public ServerEnable(RedisConnection redisConnection, Spigot main) {
+    public ServerEnableRedis(RedisConnection redisConnection, Spigot main) {
         this.redisConnection = redisConnection;
         this.main = main;
     }

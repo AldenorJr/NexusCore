@@ -1,4 +1,4 @@
-package br.com.nexus.main.core.util;
+package br.com.nexus.main.core.launches.spigot.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
