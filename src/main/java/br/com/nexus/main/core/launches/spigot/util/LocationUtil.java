@@ -6,6 +6,10 @@ import org.bukkit.Location;
 public class LocationUtil {
 
     public static String serializeLoc(Location loc) {
+        double x = Math.floor(loc.getX()) + 0.5;
+        double z = Math.floor(loc.getZ()) + 0.5;
+        loc.setX(x);
+        loc.setZ(z);
         return loc.getX() + "#" + loc.getY() + "#" + loc.getZ() + "#" + loc.getWorld().getName() +"#"+ loc.getPitch() + "#" + loc.getYaw();
     }
 

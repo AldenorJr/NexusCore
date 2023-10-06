@@ -79,9 +79,7 @@ public class Economy {
                         (oldValue, newValue) -> oldValue,
                         LinkedHashMap::new
                 ));
-
         jedis.close();
-
         return sortedRankings;
     }
 

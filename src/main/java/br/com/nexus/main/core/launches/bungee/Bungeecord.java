@@ -1,7 +1,6 @@
 package br.com.nexus.main.core.launches.bungee;
 
-import br.com.nexus.main.core.database.MongoDB.MongoConnection;
-import br.com.nexus.main.core.database.MongoDB.method.UsersMethodDatabase;
+import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import br.com.nexus.main.core.launches.bungee.redis.ServerRegistration;
 import br.com.nexus.main.core.launches.bungee.listener.ProxiedPlayersJoin;
@@ -18,9 +17,8 @@ public class Bungeecord extends Plugin {
     private final TextComponentUtil textComponentUtil = new TextComponentUtil();
     private final ConfigurationFile configurationFile = new ConfigurationFile(this);
     private final RedisConnection redisConnection = new RedisConnection();
-    private final MongoConnection mongoConnection = new MongoConnection();
-    private final UsersMethodDatabase usersMethodDatabase = new UsersMethodDatabase(mongoConnection, textComponentUtil);
-    private final ProxiedPlayersJoin databaseJoinProxiedPlayers = new ProxiedPlayersJoin(usersMethodDatabase);
+    private final MongoDatabase mongoConnection = new MongoDatabase();
+    private final ProxiedPlayersJoin databaseJoinProxiedPlayers = new ProxiedPlayersJoin(mongoConnection);
     private final ServerRegistration serverRegistration = new ServerRegistration(redisConnection, textComponentUtil);
 
     @Override
@@ -31,6 +29,7 @@ public class Bungeecord extends Plugin {
 
             redisConnection.openConnection(config.getString("Redis.address"), config.getInt("Redis.port"));
             mongoConnection.openConnection(config.getString("MongoDB.address"), config.getInt("MongoDB.port"));
+            mongoConnection.mappingObject();
         } catch (IOException e) {
             BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §aErro ao carregar a config.yml"));
         }
