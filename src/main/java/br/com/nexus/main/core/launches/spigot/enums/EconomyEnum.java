@@ -8,7 +8,7 @@ public enum EconomyEnum {
     Magia("Magias", "§4", "❈",false, new String[]{"magia", "poder"}), // (Consegue para upar os encantamentos da mina) Gemas
     Coins("Coins", "§b", "✸",false, new String[]{"coin"}), // pagando
     Token("Tokens", "§3", "✪",true, new String[]{"token"}), // boss
-    Alma("Almas", "§d", "", true, new String[]{"soul", "souls"});
+    Alma("Almas", "§d", "✝", true, new String[]{"soul", "souls"});
 
     private final String economyName;
     private final String color;

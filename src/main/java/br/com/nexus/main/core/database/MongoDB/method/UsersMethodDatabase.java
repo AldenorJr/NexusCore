@@ -1,17 +1,13 @@
 package br.com.nexus.main.core.database.MongoDB.method;
 
 import br.com.nexus.main.core.database.MongoDB.MongoConnection;
-import br.com.nexus.main.core.launches.spigot.models.PlayerPetsModel;
-import br.com.nexus.main.core.launches.spigot.models.PlayerSymbolModel;
-import br.com.nexus.main.core.launches.spigot.models.PlayerTagsModel;
-import br.com.nexus.main.core.launches.bungeecord.util.TextComponentUtil;
+import br.com.nexus.main.core.launches.bungee.util.TextComponentUtil;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.bson.Document;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class UsersMethodDatabase {

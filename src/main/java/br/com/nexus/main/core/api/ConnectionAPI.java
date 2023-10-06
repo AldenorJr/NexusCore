@@ -3,7 +3,6 @@ package br.com.nexus.main.core.api;
 import br.com.nexus.main.core.database.MongoDB.MongoConnection;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import br.com.nexus.main.core.launches.spigot.Spigot;
-import br.com.nexus.main.core.launches.spigot.redis.EconomyRedis;
 import com.mongodb.MongoClient;
 import redis.clients.jedis.Jedis;
 

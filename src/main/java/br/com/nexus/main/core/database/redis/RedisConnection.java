@@ -19,7 +19,7 @@ public class RedisConnection {
     }
 
     public void closeConnection() {
-        jedisPool.close();
+        jedisPool.destroy();
     }
 
 }
