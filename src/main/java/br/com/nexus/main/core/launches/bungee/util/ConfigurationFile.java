@@ -1,9 +1,9 @@
-package br.com.nexus.main.core.launches.bungeecord.util;
+package br.com.nexus.main.core.launches.bungee.util;
 
 import java.io.File;
 import java.io.IOException;
 
-import br.com.nexus.main.core.launches.bungeecord.Bungeecord;
+import br.com.nexus.main.core.launches.bungee.Bungeecord;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;

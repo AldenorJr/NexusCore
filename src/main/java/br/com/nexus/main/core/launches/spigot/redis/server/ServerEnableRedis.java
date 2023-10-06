@@ -1,4 +1,4 @@
-package br.com.nexus.main.core.launches.spigot.redis;
+package br.com.nexus.main.core.launches.spigot.redis.server;
 
 import br.com.nexus.main.core.launches.spigot.Spigot;
 import br.com.nexus.main.core.database.redis.RedisConnection;
@@ -23,8 +23,9 @@ public class ServerEnableRedis {
         String address = main.getConfig().getString("Server-info.address");
         String port = main.getConfig().getString("Server-info.port");
         String name = main.getConfig().getString("Server-info.name");
+        boolean priority = main.getConfig().getBoolean("Server-info.priority");
 
-        jedis.publish(channel, "REGISTER_SERVER " + port + " " + address + " " + motd + " " + name);
+        jedis.publish(channel, "REGISTER_SERVER " + port + " " + address + " " + motd + " " + name + " " + priority);
         Bukkit.getConsoleSender().sendMessage("§6§l[NexusCore] §aEnviado solicitação de registro do servidor "+name+".");
         jedis.close();
     }
