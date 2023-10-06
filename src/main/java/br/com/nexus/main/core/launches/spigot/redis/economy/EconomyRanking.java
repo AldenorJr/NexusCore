@@ -1,17 +1,21 @@
 package br.com.nexus.main.core.launches.spigot.redis.economy;
 
+import br.com.nexus.main.core.database.MongoDB.MongoConnection;
 import br.com.nexus.main.core.launches.spigot.enums.EconomyEnum;
 import br.com.nexus.main.core.launches.spigot.util.FormattedBigDecimal;
 import br.com.nexus.main.core.launches.spigot.util.ItemBuilder;
 import br.com.nexus.main.core.launches.spigot.util.SkullAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class EconomyRanking {
 
@@ -24,7 +28,7 @@ public class EconomyRanking {
         this.economy = economy;
     }
 
-    public void LoadRanking() {
+    public void loadRanking() {
         for (EconomyEnum economyEnum : EconomyEnum.values()) {
             Map<String, BigDecimal> rankingEconomy = economy.getRankingEconomy(economyEnum);
             Inventory inventory = Bukkit.createInventory(null, 6 * 9, "§8Ranking " + economyEnum.getEconomyName());
@@ -69,6 +73,18 @@ public class EconomyRanking {
 
             inventoryRanking.put(economyEnum, inventory);
             playersRanking.put(economyEnum, new HashMap<>(rankingEconomy));
+
+            for (Map.Entry<EconomyEnum, HashMap<String, BigDecimal>> entry : playersRanking.entrySet()) {
+                LinkedHashMap<String, BigDecimal> sortedHashMap = entry.getValue().entrySet().stream()
+                        .sorted(Map.Entry.<String, BigDecimal>comparingByValue().reversed())
+                        .collect(Collectors.toMap(
+                                Map.Entry::getKey,
+                                Map.Entry::getValue,
+                                (oldValue, newValue) -> oldValue,
+                                LinkedHashMap::new));
+
+                playersRanking.replace(entry.getKey(), sortedHashMap);
+            }
         }
         Bukkit.getConsoleSender().sendMessage("§6§l[NexusCore] §aTodos os rankings foram recarregados.");
     }
