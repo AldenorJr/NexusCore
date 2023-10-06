@@ -1,6 +1,6 @@
 package br.com.nexus.main.core.launches.spigot;
 
-import br.com.nexus.main.core.database.MongoDB.MongoConnection;
+import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import br.com.nexus.main.core.launches.spigot.listener.PlayerJoinServer;
 import br.com.nexus.main.core.launches.spigot.listener.economy.EconomyCommand;
@@ -16,12 +16,10 @@ import br.com.nexus.main.core.launches.spigot.util.RankingUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.awt.*;
-
 public class Spigot extends JavaPlugin {
 
     private final RedisConnection redisConnection = new RedisConnection();
-    private final MongoConnection mongoConnection = new MongoConnection();
+    private final MongoDatabase mongoConnection = new MongoDatabase();
     private final ServerEnableRedis serverEnable = new ServerEnableRedis(redisConnection, this);
     private final Economy economy = new Economy(this);
     private final HologramUtil hologramUtil = new HologramUtil(this);
@@ -45,6 +43,7 @@ public class Spigot extends JavaPlugin {
         getServer().getPluginManager().registerEvents(economyCommand, this);
         getServer().getPluginManager().registerEvents(rankingEvent, this);
         getServer().getPluginManager().registerEvents(eventArmorStand, this);
+        mongoConnection.mappingObject();
 
         Bukkit.getConsoleSender().sendMessage("§6§l[NexusCore] §aHabilitado §c§lSPIGOT§a.");
     }
@@ -87,7 +86,7 @@ public class Spigot extends JavaPlugin {
         return economy;
     }
 
-    public MongoConnection getMongoConnection() {
+    public MongoDatabase getMongoConnection() {
         return mongoConnection;
     }
 

@@ -1,6 +1,6 @@
 package br.com.nexus.main.core.launches.spigot.redis.economy;
 
-import br.com.nexus.main.core.database.MongoDB.MongoConnection;
+import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
 import br.com.nexus.main.core.launches.spigot.enums.EconomyEnum;
 import br.com.nexus.main.core.launches.spigot.util.*;
 import com.mongodb.MongoClient;
@@ -16,11 +16,11 @@ import java.util.ArrayList;
 
 public class EconomyArmorStand {
 
-    private final MongoConnection mongoConnection;
+    private final MongoDatabase mongoConnection;
     private final HologramUtil hologramUtil;
     private final RankingUtil rankingUtil;
 
-    public EconomyArmorStand(MongoConnection mongoConnection, HologramUtil hologramUtil, RankingUtil rankingUtil) {
+    public EconomyArmorStand(MongoDatabase mongoConnection, HologramUtil hologramUtil, RankingUtil rankingUtil) {
         this.mongoConnection = mongoConnection;
         this.hologramUtil = hologramUtil;
         this.rankingUtil = rankingUtil;

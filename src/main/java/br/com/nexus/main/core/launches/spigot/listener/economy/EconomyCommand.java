@@ -44,9 +44,9 @@ public class EconomyCommand implements Listener {
                 player.sendMessage("§aCarregando ranking...");
                 return;
             }
-            if(args[1].equalsIgnoreCase("remover")) {
+            if (args[1].equalsIgnoreCase("remover")) {
                 // /economy remover <nick> <quantidade>
-                if(args.length != 3) {
+                if (args.length != 3) {
                     player.sendMessage("§cSiga o seguinte padrão: /" + value.getEconomyName() + " remover <nick> <quantidade>.");
                     return;
                 }

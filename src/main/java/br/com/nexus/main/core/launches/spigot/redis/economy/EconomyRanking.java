@@ -1,13 +1,11 @@
 package br.com.nexus.main.core.launches.spigot.redis.economy;
 
-import br.com.nexus.main.core.database.MongoDB.MongoConnection;
 import br.com.nexus.main.core.launches.spigot.enums.EconomyEnum;
 import br.com.nexus.main.core.launches.spigot.util.FormattedBigDecimal;
 import br.com.nexus.main.core.launches.spigot.util.ItemBuilder;
 import br.com.nexus.main.core.launches.spigot.util.SkullAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 

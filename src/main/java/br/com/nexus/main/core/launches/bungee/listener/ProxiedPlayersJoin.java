@@ -1,18 +1,16 @@
 package br.com.nexus.main.core.launches.bungee.listener;
 
 
-import br.com.nexus.main.core.database.MongoDB.method.UsersMethodDatabase;
+import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
+import br.com.nexus.main.core.object.PlayerModel;
 import net.md_5.bungee.BungeeCord;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.event.ServerConnectEvent;
-import net.md_5.bungee.api.event.ServerConnectedEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,15 +19,19 @@ import java.util.Map;
 
 public class ProxiedPlayersJoin implements Listener {
 
-    private final UsersMethodDatabase usersMethodDatabase;
+    private final MongoDatabase mongoDatabase;
 
-    public ProxiedPlayersJoin(UsersMethodDatabase usersMethodDatabase) {
-        this.usersMethodDatabase = usersMethodDatabase;
+    public ProxiedPlayersJoin(MongoDatabase mongoDatabase) {
+        this.mongoDatabase = mongoDatabase;
     }
 
     @EventHandler
-    public void onJoinEvent(PostLoginEvent e) {
-        usersMethodDatabase.insertDatabase(e.getPlayer());
+    public void onJoinPlayer(PostLoginEvent e) {
+        if(mongoDatabase.getDatastore().createQuery(PlayerModel.class).
+                field("name").equalIgnoreCase(e.getPlayer().getName()).asList().isEmpty()) {
+            PlayerModel playerModel = new PlayerModel(e.getPlayer().getName(), new ArrayList<>());
+            mongoDatabase.getDatastore().save(playerModel);
+        }
     }
 
     @EventHandler
