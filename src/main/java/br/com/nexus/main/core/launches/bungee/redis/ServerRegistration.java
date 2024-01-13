@@ -35,16 +35,16 @@ public class ServerRegistration {
                 String port = args[1];
                 String motd = args[3];
                 if(priority) name = name+"-priority";
-                if (args[0].equalsIgnoreCase("REGISTER_SERVER")) {
-                    BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §aRegistrando o servidor, " + args[4] + "."));
-                    ServerInfo serverInfo = ProxyServer.getInstance().constructServerInfo(name, InetSocketAddress.createUnresolved(address, Integer.parseInt(port)), motd, false);
-                    ProxyServer.getInstance().getServers().put(name, serverInfo);
-                    return;
-                }
-                if (args[0].equalsIgnoreCase("UNREGISTER_SERVER")) {
-                    BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §cRetirando servidor, " + args[4] + " da lista."));
-                    ProxyServer.getInstance().getServers().remove(name);
-                    return;
+                switch (args[0]) {
+                    case "REGISTER_SERVER":
+                        BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §aRegistrando o servidor, " + args[4] + "."));
+                        ServerInfo serverInfo = ProxyServer.getInstance().constructServerInfo(name, InetSocketAddress.createUnresolved(address, Integer.parseInt(port)), motd, false);
+                        ProxyServer.getInstance().getServers().put(name, serverInfo);
+                        break;
+                    case "UNREGISTER_SERVER":
+                        BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §cRetirando servidor, " + args[4] + " da lista."));
+                        ProxyServer.getInstance().getServers().remove(name);
+                        break;
                 }
             }
         };

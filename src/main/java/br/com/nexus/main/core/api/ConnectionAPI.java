@@ -1,6 +1,6 @@
 package br.com.nexus.main.core.api;
 
-import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
+import br.com.nexus.main.core.database.mongodb.MongoDatabase;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import br.com.nexus.main.core.launches.spigot.Spigot;
 import com.mongodb.MongoClient;

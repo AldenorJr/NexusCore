@@ -1,13 +1,11 @@
 package br.com.nexus.main.core.launches.bungee.listener;
 
 
-import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
-import br.com.nexus.main.core.object.PlayerModel;
+import br.com.nexus.main.core.database.mongodb.MongoDatabase;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.event.ServerConnectEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -23,15 +21,6 @@ public class ProxiedPlayersJoin implements Listener {
 
     public ProxiedPlayersJoin(MongoDatabase mongoDatabase) {
         this.mongoDatabase = mongoDatabase;
-    }
-
-    @EventHandler
-    public void onJoinPlayer(PostLoginEvent e) {
-        if(mongoDatabase.getDatastore().createQuery(PlayerModel.class).
-                field("name").equalIgnoreCase(e.getPlayer().getName()).asList().isEmpty()) {
-            PlayerModel playerModel = new PlayerModel(e.getPlayer().getName(), new ArrayList<>());
-            mongoDatabase.getDatastore().save(playerModel);
-        }
     }
 
     @EventHandler

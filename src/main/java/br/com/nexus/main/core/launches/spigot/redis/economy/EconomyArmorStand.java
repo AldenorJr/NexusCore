@@ -1,6 +1,6 @@
 package br.com.nexus.main.core.launches.spigot.redis.economy;
 
-import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
+import br.com.nexus.main.core.database.mongodb.MongoDatabase;
 import br.com.nexus.main.core.launches.spigot.enums.EconomyEnum;
 import br.com.nexus.main.core.launches.spigot.util.*;
 import com.mongodb.MongoClient;
