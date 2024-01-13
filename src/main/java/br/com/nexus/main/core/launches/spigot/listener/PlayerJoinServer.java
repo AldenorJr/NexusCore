@@ -2,6 +2,7 @@ package br.com.nexus.main.core.launches.spigot.listener;
 
 import br.com.nexus.main.core.launches.spigot.enums.EconomyEnum;
 import br.com.nexus.main.core.launches.spigot.redis.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,18 +27,17 @@ public class PlayerJoinServer implements Listener {
         player.sendMessage(new String[]{"", ""});
     }
 
-
-
     @EventHandler
-    public void playerMove(PlayerMoveEvent e) {
+    public void onMove(PlayerMoveEvent e) {
         Player player = e.getPlayer();
-        economy.bankDeposit(player.getName(), EconomyEnum.Money, new BigDecimal("100000000000000000000000000000"));
-        economy.bankDeposit(player.getName(), EconomyEnum.Alma, new BigDecimal("500000000000000"));
-        economy.bankDeposit(player.getName(), EconomyEnum.Cash, new BigDecimal("32000000000000000"));
-        economy.bankDeposit(player.getName(), EconomyEnum.Coins, new BigDecimal("20000"));
-        economy.bankDeposit(player.getName(), EconomyEnum.Crystal, new BigDecimal("3200000000000"));
-        economy.bankDeposit(player.getName(), EconomyEnum.Magia, new BigDecimal("2000000000000"));
-        economy.bankDeposit(player.getName(), EconomyEnum.Token, new BigDecimal("10000000000000"));
+        Bukkit.getScheduler().runTaskAsynchronously(Bukkit.getPluginManager().getPlugin("NexusCore"), () -> {
+            for(int x = 0; x <= 10000; x++) {
+                for(EconomyEnum economyEnum : EconomyEnum.values()) {
+                    economy.bankDeposit(player.getName(), economyEnum, new BigDecimal("100000000000000000000000000000000000000"));
+                }
+            }
+        });
+        Bukkit.getConsoleSender().sendMessage("§aDepositado 1000000000 em cada conta. 100x");
     }
 
 }

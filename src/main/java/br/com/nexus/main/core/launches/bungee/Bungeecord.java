@@ -1,6 +1,6 @@
 package br.com.nexus.main.core.launches.bungee;
 
-import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
+import br.com.nexus.main.core.database.mongodb.MongoDatabase;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import br.com.nexus.main.core.launches.bungee.redis.ServerRegistration;
 import br.com.nexus.main.core.launches.bungee.listener.ProxiedPlayersJoin;
@@ -29,7 +29,6 @@ public class Bungeecord extends Plugin {
 
             redisConnection.openConnection(config.getString("Redis.address"), config.getInt("Redis.port"));
             mongoConnection.openConnection(config.getString("MongoDB.address"), config.getInt("MongoDB.port"));
-            mongoConnection.mappingObject();
         } catch (IOException e) {
             BungeeCord.getInstance().getConsole().sendMessage(textComponentUtil.createTextComponent("§6§l[NexusCore] §aErro ao carregar a config.yml"));
         }

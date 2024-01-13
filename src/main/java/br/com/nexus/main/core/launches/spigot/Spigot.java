@@ -1,6 +1,6 @@
 package br.com.nexus.main.core.launches.spigot;
 
-import br.com.nexus.main.core.database.MongoDB.MongoDatabase;
+import br.com.nexus.main.core.database.mongodb.MongoDatabase;
 import br.com.nexus.main.core.database.redis.RedisConnection;
 import br.com.nexus.main.core.launches.spigot.listener.PlayerJoinServer;
 import br.com.nexus.main.core.launches.spigot.listener.economy.EconomyCommand;
@@ -43,7 +43,6 @@ public class Spigot extends JavaPlugin {
         getServer().getPluginManager().registerEvents(economyCommand, this);
         getServer().getPluginManager().registerEvents(rankingEvent, this);
         getServer().getPluginManager().registerEvents(eventArmorStand, this);
-        mongoConnection.mappingObject();
 
         Bukkit.getConsoleSender().sendMessage("§6§l[NexusCore] §aHabilitado §c§lSPIGOT§a.");
     }
